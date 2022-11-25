@@ -15,24 +15,26 @@ function onInput(event) {
     let inputText = event.target.value.trim();
 
     if (!inputText) 
-        return countryInfo.innerHTML = '';
-        countryList.innerHTML = '';
-    
+        return 
     {
         return fetchCountries(inputText)
             .then(data => {
                 if (data.length === 1) {
                     countryList.innerHTML = '';
-                    return markupCountry(data);
+                    markupCountry(data);
+                    return
                 }
                 if (data.length >= 2 && data.length <= 10) {
                     countryInfo.innerHTML = '';
-                    return markupCountryList(data);
+                    markupCountryList(data);
+                    return 
                 }
-                return Notify.info('Too many matches found. Please enter a more specific name.');
+                Notify.info('Too many matches found. Please enter a more specific name.');
             })
             .catch(error => {
                 Notify.failure('Oops, there is no country with that name');
+                        countryInfo.innerHTML = '';
+                        countryList.innerHTML = '';
             });
     }
 };
